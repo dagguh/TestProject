@@ -53,7 +53,7 @@ import java.util.List;
 @Table(name = "stories", uniqueConstraints = @UniqueConstraint(columnNames = {"name", "sprint_id"}))
 @NamedQueries({@NamedQuery(name = "story.countByNameAndSprint", query = "select count(s) from Story as s where s.name = :name and s.sprint = :sprint and not(s = :currentStory)"),
         @NamedQuery(name = "story.new.countByNameAndSprint", query = "select count(s) from Story as s where s.name = :name and s.sprint = :sprint")})
-public class Story extends AbstractEntity implements Serializable {
+public class CoolStoryBro extends AbstractEntity implements Serializable {
 
 
 	// blabla some changes
@@ -75,16 +75,16 @@ public class Story extends AbstractEntity implements Serializable {
     @OneToMany(mappedBy = "story", cascade = CascadeType.ALL)
     private List<Task> tasks;
 
-    public Story() {
+    public CoolStoryBro() {
         this.startDate = new Date();
     }
 
-    public Story(String name) {
+    public CoolStoryBro(String name) {
         this();
         this.name = name;
     }
 
-    public Story(String name, Sprint sprint) {
+    public CoolStoryBro(String name, Sprint sprint) {
         this(name);
         this.name = name;
         if (sprint != null) {
@@ -204,7 +204,7 @@ public class Story extends AbstractEntity implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Story other = (Story) obj;
+        final CoolStoryBro other = (CoolStoryBro) obj;
         if ((this.name == null) ? (other.name != null) : !this.name.equals(other.name)) {
             return false;
         }

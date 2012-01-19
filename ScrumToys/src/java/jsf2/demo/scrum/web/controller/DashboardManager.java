@@ -40,7 +40,7 @@ Other names may be trademarks of their respective owners.
 package jsf2.demo.scrum.web.controller;
 
 import jsf2.demo.scrum.model.entities.Sprint;
-import jsf2.demo.scrum.model.entities.Story;
+import jsf2.demo.scrum.model.entities.CoolStoryBro;
 import jsf2.demo.scrum.model.entities.Task;
 
 import javax.annotation.PreDestroy;
@@ -87,12 +87,12 @@ public class DashboardManager extends AbstractManager implements Serializable {
         this.getSprintManager().setCurrentSprint(sprint);
     }
 
-    public DataModel<Story> getStories() {
+    public DataModel<CoolStoryBro> getStories() {
         return storyManager.getStories();
     }
 
 
-    public void setStories(DataModel<Story> stories) {
+    public void setStories(DataModel<CoolStoryBro> stories) {
         storyManager.setStories(stories);
     }
 
@@ -101,7 +101,7 @@ public class DashboardManager extends AbstractManager implements Serializable {
         if (sprintManager.getCurrentSprint() == null) {
             return new ListDataModel(toDoTasksList);
         }
-        for (Story story : storyManager.getStoryList()) {
+        for (CoolStoryBro story : storyManager.getStoryList()) {
             toDoTasksList.addAll(story.getTodoTasks());
         }
         toDoTasks = new ListDataModel(toDoTasksList);
@@ -113,7 +113,7 @@ public class DashboardManager extends AbstractManager implements Serializable {
         if (sprintManager.getCurrentSprint() == null) {
             return new ListDataModel(workingTasksList);
         }
-        for (Story story : storyManager.getStoryList()) {
+        for (CoolStoryBro story : storyManager.getStoryList()) {
             workingTasksList.addAll(story.getWorkingTasks());
         }
         workingTasks = new ListDataModel(workingTasksList);
@@ -125,7 +125,7 @@ public class DashboardManager extends AbstractManager implements Serializable {
         if (sprintManager.getCurrentSprint() == null) {
             return new ListDataModel(doneTasksList);
         }
-        for (Story story : storyManager.getStoryList()) {
+        for (CoolStoryBro story : storyManager.getStoryList()) {
             doneTasksList.addAll(story.getDoneTasks());
         }
         doneTasks = new ListDataModel(doneTasksList);
@@ -137,7 +137,7 @@ public class DashboardManager extends AbstractManager implements Serializable {
             return "";
 
         taskManager.setCurrentTask(currentTask);
-        Story currentStory = storyManager.getCurrentStory();
+        CoolStoryBro currentStory = storyManager.getCurrentStory();
         if (currentStory != currentTask.getStory()) {
             storyManager.setCurrentStory(currentTask.getStory());
         }

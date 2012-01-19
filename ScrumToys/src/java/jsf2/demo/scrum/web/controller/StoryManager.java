@@ -40,7 +40,7 @@ Other names may be trademarks of their respective owners.
 package jsf2.demo.scrum.web.controller;
 
 import jsf2.demo.scrum.model.entities.Sprint;
-import jsf2.demo.scrum.model.entities.Story;
+import jsf2.demo.scrum.model.entities.CoolStoryBro;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -70,9 +70,9 @@ public class StoryManager extends AbstractManager implements Serializable {
     private static final long serialVersionUID = 1L;
     @ManagedProperty("#{sprintManager}")
     private SprintManager sprintManager;
-    private Story currentStory;
-    private DataModel<Story> stories;
-    private List<Story> storyList;
+    private CoolStoryBro currentStory;
+    private DataModel<CoolStoryBro> stories;
+    private List<CoolStoryBro> storyList;
 
     @PostConstruct
     public void construct() {
@@ -95,18 +95,18 @@ public class StoryManager extends AbstractManager implements Serializable {
         Sprint currentSprint = sprintManager.getCurrentSprint();
 
         if (currentSprint != null) {
-            Story story = new Story();
-            setStoryList(new LinkedList<Story>(currentSprint.getStories()));
+            CoolStoryBro story = new CoolStoryBro();
+            setStoryList(new LinkedList<CoolStoryBro>(currentSprint.getStories()));
             story.setSprint(currentSprint);
             setCurrentStory(story);
         } else {
-            setStoryList(new ArrayList<Story>());
+            setStoryList(new ArrayList<CoolStoryBro>());
         }
-        stories = new ListDataModel<Story>(getStoryList());
+        stories = new ListDataModel<CoolStoryBro>(getStoryList());
     }
 
     public String create() {
-        Story story = new Story();
+        CoolStoryBro story = new CoolStoryBro();
         story.setSprint(sprintManager.getCurrentSprint());
         setCurrentStory(story);
         return "create";
@@ -115,9 +115,9 @@ public class StoryManager extends AbstractManager implements Serializable {
     public String save() {
         if (currentStory != null) {
             try {
-                Story merged = doInTransaction(new PersistenceAction<Story>() {
+                CoolStoryBro merged = doInTransaction(new PersistenceAction<CoolStoryBro>() {
 
-                    public Story execute(EntityManager em) {
+                    public CoolStoryBro execute(EntityManager em) {
                         if (currentStory.isNew()) {
                             em.persist(currentStory);
                         } else if (!em.contains(currentStory)) {
@@ -152,7 +152,7 @@ public class StoryManager extends AbstractManager implements Serializable {
     }
 
     public String remove() {
-        final Story story = stories.getRowData();
+        final CoolStoryBro story = stories.getRowData();
         if (story != null) {
             try {
                 doInTransaction(new PersistenceActionWithoutResult() {
@@ -208,24 +208,24 @@ public class StoryManager extends AbstractManager implements Serializable {
         return "showTasks";
     }
 
-    public Story getCurrentStory() {
+    public CoolStoryBro getCurrentStory() {
         return currentStory;
     }
 
-    public void setCurrentStory(Story currentStory) {
+    public void setCurrentStory(CoolStoryBro currentStory) {
         this.currentStory = currentStory;
     }
 
-    public DataModel<Story> getStories() {
+    public DataModel<CoolStoryBro> getStories() {
         if (sprintManager.getCurrentSprint() != null) {
             this.stories = new ListDataModel(sprintManager.getCurrentSprint().getStories());
             return stories;
         } else {
-            return new ListDataModel<Story>();
+            return new ListDataModel<CoolStoryBro>();
         }
     }
 
-    public void setStories(DataModel<Story> stories) {
+    public void setStories(DataModel<CoolStoryBro> stories) {
         this.stories = stories;
     }
 
@@ -240,7 +240,7 @@ public class StoryManager extends AbstractManager implements Serializable {
     /**
      * @return the storyList
      */
-    public List<Story> getStoryList() {
+    public List<CoolStoryBro> getStoryList() {
         if (sprintManager.getCurrentSprint() != null) {
             this.storyList = sprintManager.getCurrentSprint().getStories();
         }
@@ -250,7 +250,7 @@ public class StoryManager extends AbstractManager implements Serializable {
     /**
      * @param storyList the storyList to set
      */
-    public void setStoryList(List<Story> storyList) {
+    public void setStoryList(List<CoolStoryBro> storyList) {
         this.storyList = storyList;
     }
 

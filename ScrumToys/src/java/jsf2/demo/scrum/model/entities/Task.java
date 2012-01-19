@@ -70,7 +70,7 @@ public class Task extends AbstractEntity implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "story_id")
-    private Story story;
+    private CoolStoryBro story;
 
     public Task() {
         this.status = TaskStatus.TODO;
@@ -81,7 +81,7 @@ public class Task extends AbstractEntity implements Serializable {
         this.name = name;
     }
 
-    public Task(String name, Story story) {
+    public Task(String name, CoolStoryBro story) {
         this(name);
         if (story != null) {
             story.addTask(this);
@@ -135,11 +135,11 @@ public class Task extends AbstractEntity implements Serializable {
         this.status = status;
     }
 
-    public Story getStory() {
+    public CoolStoryBro getStory() {
         return story;
     }
 
-    public void setStory(Story story) {
+    public void setStory(CoolStoryBro story) {
         this.story = story;
     }
 

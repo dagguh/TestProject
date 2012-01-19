@@ -39,7 +39,7 @@ Other names may be trademarks of their respective owners.
 
 package jsf2.demo.scrum.web.controller;
 
-import jsf2.demo.scrum.model.entities.Story;
+import jsf2.demo.scrum.model.entities.CoolStoryBro;
 import jsf2.demo.scrum.model.entities.Task;
 
 import javax.annotation.PostConstruct;
@@ -86,7 +86,7 @@ public class TaskManager extends AbstractManager implements Serializable {
 
     public void init() {
         Task task = new Task();
-        Story currentStory = storyManager.getCurrentStory();
+        CoolStoryBro currentStory = storyManager.getCurrentStory();
         task.setStory(currentStory);
         setCurrentTask(task);
         if (currentStory != null) {
@@ -212,11 +212,11 @@ public class TaskManager extends AbstractManager implements Serializable {
         this.tasks = tasks;
     }
 
-    public Story getStory() {
+    public CoolStoryBro getStory() {
         return storyManager.getCurrentStory();
     }
 
-    public void setStory(Story story) {
+    public void setStory(CoolStoryBro story) {
         storyManager.setCurrentStory(story);
     }
 

@@ -73,7 +73,7 @@ public class Sprint extends AbstractEntity implements Serializable {
     @Column(name = "daily_meeting_time")
     private Date dailyMeetingTime;
     @OneToMany(mappedBy = "sprint", cascade = CascadeType.ALL)
-    private List<Story> stories;
+    private List<CoolStoryBro> stories;
     @ManyToOne
     @JoinColumn(name = "project_id")
     private Project project;
@@ -149,13 +149,13 @@ public class Sprint extends AbstractEntity implements Serializable {
         this.dailyMeetingTime = dailyMeetingTime;
     }
 
-    public List<Story> getStories() {
+    public List<CoolStoryBro> getStories() {
         return (stories != null) ? Collections.unmodifiableList(stories) : Collections.EMPTY_LIST;
     }
 
-    public boolean addStory(Story story) {
+    public boolean addStory(CoolStoryBro story) {
         if (stories == null) {
-            stories = new LinkedList<Story>();
+            stories = new LinkedList<CoolStoryBro>();
         }
         if (story != null && !stories.contains(story)) {
             stories.add(story);
@@ -165,7 +165,7 @@ public class Sprint extends AbstractEntity implements Serializable {
         return false;
     }
 
-    public boolean removeStory(Story story) {
+    public boolean removeStory(CoolStoryBro story) {
         if (stories != null && !stories.isEmpty()) {
             return stories.remove(story);
         } else {
