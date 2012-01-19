@@ -57,6 +57,7 @@ public class CoolStoryBro extends AbstractEntity implements Serializable {
 
 
 	// blabla some changes
+	// cool story bro
     private static final long serialVersionUID = 1L;
     @Column(nullable = false)
     private String name;
